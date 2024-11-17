@@ -1,1 +1,94 @@
-Hi World!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tet 2025 Countdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .middle {
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .label {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .time {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.5rem;
+    }
+    .time span {
+      width: 70px;
+    }
+  </style>
+</head>
+<body>
+  <div class="middle">
+    <h1 class="label">Tet 2025 Countdown</h1>
+    <div class="time">
+      <span>
+        <span id="d">00</span>
+        Days
+      </span>
+      <span>
+        <span id="h">00</span>
+        Hours
+      </span>
+      <span>
+        <span id="m">00</span>
+        Minutes
+      </span>
+      <span>
+        <span id="s">00</span>
+        Seconds
+      </span>
+    </div>
+  </div>
+
+  <script>
+    // Set the date for Tet 2025 (January 29, 2025)
+    var countdownDate = new Date("Jan 29, 2025 00:00:00").getTime();
+
+    // Update the countdown every 1 second
+    var x = setInterval(function() {
+      var now = new Date().getTime(); // Get current time
+      var distance = countdownDate - now; // Calculate the time remaining
+
+      // Calculate days, hours, minutes, and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in the respective span elements
+      document.getElementById("d").innerHTML = days;
+      document.getElementById("h").innerHTML = hours;
+      document.getElementById("m").innerHTML = minutes;
+      document.getElementById("s").innerHTML = seconds;
+
+      // If the countdown ends, display a message
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("d").innerHTML = "EXPIRED";
+        document.getElementById("h").innerHTML = "";
+        document.getElementById("m").innerHTML = "";
+        document.getElementById("s").innerHTML = "";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
